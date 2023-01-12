@@ -2,19 +2,34 @@ import React from 'react';
 
 import './Editor.css';
 
-export default function Editor() {
+export default function Editor({ setTitle, setSubtitle, setFont, setText, setAlign }) {
+  function handleTitleChange(e) {
+    setTitle(e.target.value);
+  }
+  function handleSubtitleChange(e) {
+    setSubtitle(e.target.value);
+  }
+  function handleFontChange(e) {
+    setFont(e.target.value);
+  }
+  function handleTextChange(e) {
+    setText(e.target.value);
+  }
+  function handleAlignChange(e) {
+    setAlign(e.target.value);
+  }
   return (
     <div className="editor">
       <div className="form-control">
-        <input name="title" type="text" />
+        <input name="title" type="text" onChange={handleTitleChange} />
         <label htmlFor="title">Title</label>
       </div>
       <div className="form-control">
-        <input type="text" />
-        <label>Subtitle</label>
+        <input name="subtitle" type="text" onChange={handleSubtitleChange} />
+        <label htmlFor="subtitle">Subtitle</label>
       </div>
       <div className="form-control">
-        <select>
+        <select name="font" type="select" onChange={handleFontChange}>
           <option value="architect">{"Architect's Daughter"}</option>
           <option value="comforter">Comforter</option>
           <option value="fredoka">Fredoka</option>
@@ -30,21 +45,21 @@ export default function Editor() {
         <label>Alignment</label>
         <div className="radio-group">
           <label>
-            <input name="align" type="radio" value="left" />
+            <input name="align" type="radio" value="left" onChange={handleAlignChange} />
             <i className="ri-align-left"></i>
           </label>
           <label>
-            <input name="align" type="radio" value="center" />
+            <input name="align" type="radio" value="center" onChange={handleAlignChange} />
             <i className="ri-align-center"></i>
           </label>
           <label>
-            <input name="align" type="radio" value="right" />
+            <input name="align" type="radio" value="right" onChange={handleAlignChange} />
             <i className="ri-align-right"></i>
           </label>
         </div>
       </div>
       <div className="form-control">
-        <textarea style={{ height: '250px' }} />
+        <textarea style={{ height: '250px' }} onChange={handleTextChange} />
         <label>Text</label>
       </div>
     </div>
